@@ -1,0 +1,178 @@
+/* Ogólne style */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styl głównego nagłówka i opisu */
+.main-title {
+    font-size: 32px;
+    color: #0077b5;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+.main-description {
+    font-size: 18px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Dostosowanie dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 26px;
+    }
+
+    .main-description {
+        font-size: 16px;
+    }
+}
+
+/* Styl ogólnych elementów */
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Styl dla formularza */
+form {
+    width: 70%;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+div[id^="question-"] {
+    margin-bottom: 30px;
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Nagłówki dla pytań */
+div[id^="question-"] h1 {
+    font-size: 18px;
+    color: #0077b5;
+}
+
+/* Style dla przycisków */
+input[type="submit"] {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+input[type="submit"]:hover {
+    background-color: #005f8a;
+}
+
+/* Style dla sekcji */
+div[id^="question-"] {
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+div[id^="question-"] p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+/* Dodatkowe style dla responsywności */
+@media (max-width: 768px) {
+    form {
+        width: 95%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+}
+
+/* Styl przycisku "Zatwierdź ankietę" */
+.submit-button {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    margin: 30px auto 20px auto;
+    display: block;
+    width: fit-content;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #005f8a;
+}
+
+/* Styl dla sekcji z wynikami */
+.survey-result {
+    width: 70%;
+    margin: 0 auto 40px auto;
+    padding: 20px;
+    background-color: #eef6fb;
+    border: 1px solid #cce0ee;
+    border-radius: 10px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    font-size: 15px;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .submit-button {
+        width: 100%;
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .survey-result {
+        width: 95%;
+        font-size: 14px;
+    }
+}

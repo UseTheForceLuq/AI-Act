@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<title>AI Act questionnaire</title>
+		<script type="text/javascript" src="scripts.js"></script>
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	</head>
+	<body>
+		<div>
+		    <h1 class="main-title">Ocena Wpływu na Środowisko</h1>
+			<p class="main-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				   
+			<form id="questionnaire-form">
+				<div id="question-1-wrapper">
+					<h1>1. System maszynowy</h1>
+					<p>Ta cecha wymaga, aby system był oparty na technologii komputerowej, zautomatyzowany i skalowalny.<br/>
+					   Wszystkie podcechy muszą być spełnione (TAK), aby cecha była uznana za spełnioną.</p>
+					<div id="question-1-1-wrapper">
+						<h1>Podcecha 1: Czy system wykorzystuje oprogramowanie do przetwarzania danych (np. algorytmy, modele ML)?</h1>
+						<label><input type="radio" name="question-1-1-answer" value="question-1-1-answer-1">TAK: System detekcji oszustw w banku, który analizuje wzorce transakcji za pomocą algorytmów ML</label><br/>
+						<label><input type="radio" name="question-1-1-answer" value="question-1-1-answer-2">NIE: Proste oprogramowanie bankowe, które pozwala tylko na sprawdzenie salda i przelewy, bez analizy danych, np. podstawowa aplikacja mobilna bez funkcji analitycznych.</label><br/>
+					</div>
+					<div id="question-1-2-wrapper">
+						<h1>Podcecha 2: Czy system działa na dedykowanym sprzęcie komputerowym (np. serwery, procesory GPU, chipy wbudowane)?</h1>
+						<label><input type="radio" name="question-1-2-answer" value="question-1-2-answer-1">TAK: System scoringu kredytowego oparty na serwerach z procesorami GPU, jak w dużych bankach inwestycyjnych, które potrzebują mocy obliczeniowej do modeli AI.</label><br/>
+						<label><input type="radio" name="question-1-2-answer" value="question-1-2-answer-2">NIE: Standardowy komputer biurkowy kasjera do obsługi transakcji, bez potrzeby specjalistycznego sprzętu, jak opisano w tradycyjnych procesach bankowych.</label><br/>
+					</div>
+					<div id="question-1-3-wrapper">
+						<h1>Podcecha 3: Czy system jest zintegrowany z innymi technologiami (np. aplikacje, urządzenia IoT)?</h1>
+						<label><input type="radio" name="question-1-3-answer" value="question-1-3-answer-1">TAK: Mobilna aplikacja bankowa zintegrowana z inteligentnymi zegarkami, np. powiadomienia o transakcjach w czasie rzeczywistym, jak w nowoczesnych bankach cyfrowych.</label><br/>
+						<label><input type="radio" name="question-1-3-answer" value="question-1-3-answer-2">NIE: Samodzielny bankomat, który działa niezależnie, bez integracji z innymi systemami, co jest typowe dla starszych instalacji.</label><br/>
+					</div>
+					<div id="question-1-4-wrapper">
+						<h1>Podcecha 4: Czy system przetwarza dane w sposób zautomatyzowany za pomocą kodu lub algorytmów?</h1>
+						<label><input type="radio" name="question-1-4-answer" value="question-1-4-answer-1">TAK: Automatyczny system handlu walutami, który wykonuje transakcje na podstawie algorytmów.</label><br/>
+						<label><input type="radio" name="question-1-4-answer" value="question-1-4-answer-2">NIE: Ręczny proces przeglądania wniosków kredytowych przez pracownika, bez automatyzacji, typowy w mniejszych bankach.</label><br/>
+					</div>
+					<div id="question-1-5-wrapper">
+						<h1>Podcecha 5: Czy system jest oparty na technologiach umożliwiających skalowalność (np. chmura, rozproszone przetwarzanie)?</h1>
+						<label><input type="radio" name="question-1-5-answer" value="question-1-5-answer-1">TAK: Chmurowa platforma AI do kampanii marketingowych, jak w dużych bankach korzystających z chmury.</label><br/>
+						<label><input type="radio" name="question-1-5-answer" value="question-1-5-answer-2">NIE: Lokalna baza danych, która wymaga manualnej obsługi przy wzroście obciążenia, typowa dla starszych systemów bankowych.</label><br/>
+					</div>											
+				</div>
+				<div id="question-2-wrapper">
+					<h1>2. Różny poziom autonomii</h1>
+					<p>Ta cecha wymaga, aby system działał samodzielnie w pewnym stopniu, z warunkiem, że przynajmniej 3 z 5 podcech muszą być spełnione (TAK).</p>
+					<div id="question-2-1-wrapper">
+						<h1>Podcecha 1: Czy system przetwarza dane i generuje wyniki bez ciągłego nadzoru człowieka?</h1>
+						<label><input type="radio" name="question-2-1-answer" value="question-2-1-answer-1">TAK: Chatbot AI w banku.</label><br/>
+						<label><input type="radio" name="question-2-1-answer" value="question-2-1-answer-2">NIE: System obsługi klienta z ludzkimi agentami, bez automatyzacji, typowy w tradycyjnych call center.</label><br/>
+					</div>
+					<div id="question-2-2-wrapper">
+						<h1>Podcecha 2: Czy system wykonuje zadania samodzielnie w określonych scenariuszach, nawet przy minimalnym nadzorze?</h1>
+						<label><input type="radio" name="question-2-2-answer" value="question-2-2-answer-1">TAK: System automatycznego zatwierdzania małych kredytów, działający z minimalnym nadzorem, jak w nowoczesnych bankach cyfrowych.</label><br/>
+						<label><input type="radio" name="question-2-2-answer" value="question-2-2-answer-2">NIE: Proces zatwierdzania kredytów wymagający ręcznego przeglądu przez menedżera, typowy w tradycyjnych bankach.</label><br/>
+					</div>
+					<div id="question-2-3-wrapper">
+						<h1>Podcecha 3: Czy system podejmuje decyzje lub wykonuje działania bez ręcznego wprowadzania każdej instrukcji?</h1>
+						<label><input type="radio" name="question-2-3-answer" value="question-2-3-answer-1">TAK: System AI dostosowujący stopy procentowe automatycznie, jak w bankach oferujących dynamiczne oprocentowanie.</label><br/>
+						<label><input type="radio" name="question-2-3-answer" value="question-2-3-answer-2">NIE: System, gdzie stopy procentowe są ustalane ręcznie, np. przez zarząd banku.</label><br/>
+					</div>
+					<div id="question-2-4-wrapper">
+						<h1>Podcecha 4: Czy system może działać w sposób ciągły bez interwencji użytkownika po początkowej konfiguracji?</h1>
+						<label><input type="radio" name="question-2-4-answer" value="question-2-4-answer-1">TAK: System monitoringu oszustw działający 24/7 po ustawieniu.</label><br/>
+						<label><input type="radio" name="question-2-4-answer" value="question-2-4-answer-2">NIE: System przetwarzania wsadowego wymagający ręcznego uruchomienia, typowy w starszych systemach.</label><br/>
+					</div>
+					<div id="question-2-5-wrapper">
+						<h1>Podcecha 5: Czy system reaguje automatycznie na zmiany w danych wejściowych lub środowisku?</h1>
+						<label><input type="radio" name="question-2-5-answer" value="question-2-5-answer-1">TAK: System scoringu kredytowego aktualizujący wyniki w czasie rzeczywistym, jak w bankach cyfrowych.</label><br/>
+						<label><input type="radio" name="question-2-5-answer" value="question-2-5-answer-2">NIE: System scoringu aktualizowany co kwartał ręcznie, typowy w tradycyjnych bankach.</label><br/>
+					</div>											
+				</div>
+				<div id="question-3-wrapper">
+					<h1>3. Zdolność adaptacji</h1>
+					<p>Ta cecha wymaga, aby system mógł się uczyć i dostosowywać, z warunkiem, że przynajmniej 2 z 5 podcech muszą być spełnione (TAK).</p>
+					<div id="question-3-1-wrapper">
+						<h1>Podcecha 1: Czy system uczy się lub aktualizuje swoje modele na podstawie nowych danych (np. uczenie maszynowe)?</h1>
+						<label><input type="radio" name="question-3-1-answer" value="question-3-1-answer-1">TAK: Model prognozowania rezygnacji klientów aktualizowany nowymi danymi, jak w bankach korzystających z analityki predykcyjnej.</label><br/>
+						<label><input type="radio" name="question-3-1-answer" value="question-3-1-answer-2">NIE: Statyczny system segmentacji klientów bez zmian, typowy w starszych systemach.</label><br/>
+					</div>
+					<div id="question-3-2-wrapper">
+						<h1>Podcecha 2: Czy system dostosowuje swoje działanie do preferencji użytkownika lub kontekstu (np. personalizacja)?</h1>
+						<label><input type="radio" name="question-3-2-answer" value="question-3-2-answer-1">TAK: Aplikacja bankowa rekomendująca produkty na podstawie historii, jak w bankach cyfrowych.</label><br/>
+						<label><input type="radio" name="question-3-2-answer" value="question-3-2-answer-2">NIE: Standardowa aplikacja bez personalizacji, oferująca te same funkcje dla wszystkich.</label><br/>
+					</div>
+					<div id="question-3-3-wrapper">
+						<h1>Podcecha 3: Czy system zmienia swoje zachowanie bez konieczności ręcznej modyfikacji kodu?</h1>
+						<label><input type="radio" name="question-3-3-answer" value="question-3-3-answer-1">TAK: System przeciwdziałania praniu pieniędzy adaptujący algorytmy, jak w nowoczesnych bankach.</label><br/>
+						<label><input type="radio" name="question-3-3-answer" value="question-3-3-answer-2">NIE: System wykrywania oszustw wymagający ręcznych zmian kodu, typowy w starszych systemach.</label><br/>
+					</div>
+					<div id="question-3-4-wrapper">
+						<h1>Podcecha 4: Czy system optymalizuje swoje działanie na podstawie wcześniejszych wyników lub doświadczeń?</h1>
+						<label><input type="radio" name="question-3-4-answer" value="question-3-4-answer-1">TAK: System doradztwa inwestycyjnego dostosowujący rekomendacje, jak w bankach oferujących AI-driven investment advice.</label><br/>
+						<label><input type="radio" name="question-3-4-answer" value="question-3-4-answer-2">NIE: Tradycyjne doradztwo oparte tylko na bieżących danych, bez uczenia się.</label><br/>
+					</div>
+					<div id="question-3-5-wrapper">
+						<h1>Podcecha 5: Czy system może dostosowywać się do nowych typów danych lub zadań po wdrożeniu?</h1>
+						<label><input type="radio" name="question-3-5-answer" value="question-3-5-answer-1">TAK: Platforma AI trenująca na nowych danych, np. analiza mediów społecznościowych, jak w bankach korzystających z big data.</label><br/>
+						<label><input type="radio" name="question-3-5-answer" value="question-3-5-answer-2">NIE: Specjalistyczny system do oszustw kart, nieadaptowalny, typowy w starszych systemach.</label><br/>
+					</div>											
+				</div>
+				<div id="question-4-wrapper">
+					<h1>4. Wnioskowanie</h1>
+					<p>Ta cecha wymaga, aby system generował wyniki na podstawie danych, z warunkiem, że wszystkie podcechy muszą być spełnione (TAK).</p>
+					<div id="question-4-1-wrapper">
+						<h1>Podcecha 1: Czy system analizuje dane wejściowe w celu generowania wyników (np. klasyfikacja, predykcja)?</h1>
+						<label><input type="radio" name="question-4-1-answer" value="question-4-1-answer-1">TAK: System prognozujący nieterminowe spłaty kredytów, jak w bankach korzystających z analityki predykcyjnej.</label><br/>
+						<label><input type="radio" name="question-4-1-answer" value="question-4-1-answer-2">NIE: Proste narzędzie raportowe prezentujące dane historyczne, bez prognoz.</label><br/>
+					</div>
+					<div id="question-4-2-wrapper">
+						<h1>Podcecha 2: Czy system generuje predykcje, decyzje, treści lub zalecenia na podstawie danych?</h1>
+						<label><input type="radio" name="question-4-2-answer" value="question-4-2-answer-1">TAK: System AI sugerujący opcje inwestycyjne, jak w bankach oferujących personalizowane porady.</label><br/>
+						<label><input type="radio" name="question-4-2-answer" value="question-4-2-answer-2">NIE: Statyczna strona z ogólnymi poradami, nie uwzględniająca danych użytkownika.</label><br/>
+					</div>
+					<div id="question-4-3-wrapper">
+						<h1>Podcecha 3: Czy system wyciąga wnioski na podstawie celów zdefiniowanych przez twórcę lub dorozumianych?</h1>
+						<label><input type="radio" name="question-4-3-answer" value="question-4-3-answer-1">TAK: System pomagający osiągnąć cele finansowe, analizując wydatki, jak w bankach cyfrowych.</label><br/>
+						<label><input type="radio" name="question-4-3-answer" value="question-4-3-answer-2">NIE: Podstawowe konto oszczędnościowe bez personalizowanych wskazówek.</label><br/>
+					</div>
+					<div id="question-4-4-wrapper">
+						<h1>Podcecha 4: Czy system przetwarza dane w sposób, który umożliwia identyfikację wzorców lub anomalii?</h1>
+						<label><input type="radio" name="question-4-4-answer" value="question-4-4-answer-1">TAK: System wykrywania anomalii identyfikujący nietypowe transakcje, jak w bankach z systemami fraud detection.</label><br/>
+						<label><input type="radio" name="question-4-4-answer" value="question-4-4-answer-2">NIE: System rejestracji transakcji bez analizy wzorców, typowy w starszych systemach.</label><br/>
+					</div>
+					<div id="question-4-5-wrapper">
+						<h1>Podcecha 5: Czy system dostarcza wyniki, które są zależne od złożonego przetwarzania danych (np. nie tylko proste reguły)?</h1>
+						<label><input type="radio" name="question-4-5-answer" value="question-4-5-answer-1">TAK: Model scoringu kredytowego uwzględniający nietradycyjne dane, jak w nowoczesnych bankach.</label><br/>
+						<label><input type="radio" name="question-4-5-answer" value="question-4-5-answer-2">NIE: Prosty model scoringu oparty na tradycyjnych czynnikach, z prostymi regułami.</label><br/>
+					</div>											
+				</div>
+				<div id="question-5-wrapper">
+					<h1>5. Wpływ na środowisko</h1>
+					<p>Ta cecha wymaga, aby system miał wpływ na otoczenie, z warunkiem, że przynajmniej 2 z 5 podcech muszą być spełnione (TAK).</p>
+					<div id="question-5-1-wrapper">
+						<h1>Podcecha 1: Czy system wpływa na decyzje lub zachowania użytkowników (np. rekomendacje, scoring)?</h1>
+						<label><input type="radio" name="question-5-1-answer" value="question-5-1-answer-1">TAK: Silnik rekomendacji sugerujący produkty, wpływając na wybory, jak w bankach cyfrowych.</label><br/>
+						<label><input type="radio" name="question-5-1-answer" value="question-5-1-answer-2">NIE: Aplikacja wyświetlająca produkty bez rekomendacji, typowa w starszych systemach.</label><br/>
+					</div>
+					<div id="question-5-2-wrapper">
+						<h1>Podcecha 2: Czy system kontroluje lub oddziałuje na urządzenia w świecie fizycznym (np. roboty, pojazdy)?</h1>
+						<label><input type="radio" name="question-5-2-answer" value="question-5-2-answer-1">TAK: System bezpieczeństwa fizycznego w banku, automatycznie reagujący na zagrożenia, jak w dużych bankach z zaawansowanymi systemami ochrony.</label><br/>
+						<label><input type="radio" name="question-5-2-answer" value="question-5-2-answer-2">NIE: Większość systemów bankowych nie kontroluje urządzeń fizycznych, co jest typowe dla tradycyjnych procesów.</label><br/>
+					</div>
+					<div id="question-5-3-wrapper">
+						<h1>Podcecha 3: Czy system zmienia treści, procesy lub interakcje w środowisku wirtualnym (np. media społecznościowe)?</h1>
+						<label><input type="radio" name="question-5-3-answer" value="question-5-3-answer-1">TAK: System zarządzania mediami społecznymi dostosowujący strategie, jak w bankach korzystających z AI do marketingu.</label><br/>
+						<label><input type="radio" name="question-5-3-answer" value="question-5-3-answer-2">NIE: Statyczna strona internetowa bez zmian, typowa w starszych bankach.</label><br/>
+					</div>
+					<div id="question-5-4-wrapper">
+						<h1>Podcecha 4: Czy wyniki systemu mają potencjalne konsekwencje dla ludzi, organizacji lub innych systemów?</h1>
+						<label><input type="radio" name="question-5-4-answer" value="question-5-4-answer-1">TAK: System automatycznego zatwierdzania kredytów, wpływający na sytuację finansową klientów, jak w bankach cyfrowych.</label><br/>
+						<label><input type="radio" name="question-5-4-answer" value="question-5-4-answer-2">NIE: System generujący wewnętrzne raporty bez wpływu na strony zewnętrzne, typowy w tradycyjnych procesach.</label><br/>
+					</div>
+					<div id="question-5-5-wrapper">
+						<h1>Podcecha 5: Czy system wpływa na alokację zasobów lub wyniki procesów (np. decyzje kredytowe, rekrutacja)?</h1>
+						<label><input type="radio" name="question-5-5-answer" value="question-5-5-answer-1">TAK: System AI optymalizujący harmonogramy pracowników, jak w dużych bankach.</label><br/>
+						<label><input type="radio" name="question-5-5-answer" value="question-5-5-answer-2">NIE: Ręczny proces budżetowania, gdzie decyzje są podejmowane przez zarząd, bez wsparcia AI.</label><br/>
+					</div>											
+				</div>
+			</form>
+			<button type="button" class="submit-button" onclick="calculateSurveyResult()">Zatwierdź ankietę</button>
+			<div id="answer" class="survey-result"></div>
+		</div>
+	</body>
+</html>
