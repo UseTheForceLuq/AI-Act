@@ -15,30 +15,140 @@ body {
     margin-bottom: 10px;
 }
 
-.main-description {
-    font-size: 18px;
-    color: #555;
-    text-align: center;
-    margin-bottom: 30px;
+.intro-text {
+    width: 40%;
+    margin: 0 auto; /* wyśrodkowanie w poziomie */
+    text-align: left; /* justowanie do lewej */
+    font-size: 24px;
     line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px; /* odstęp od kolejnych elementów */
 }
 
-/* Dostosowanie dla urządzeń mobilnych */
+/* System ID - mały input inline */
+.system-info h1[for="system-id"] {
+    display: inline-block;
+    margin-right: 10px;
+    font-weight: 600;
+    color: #0077b5;
+}
+
+#system-id {
+    display: inline-block;
+    width: 250px; /* mała szerokość */
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+/* Styl dla pól wprowadzania danych kontekstowych */
+.system-info {
+    background: #fff;
+    border: 1px solid #cce0ee;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px auto;
+    width: 70%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.system-info label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #0077b5;
+}
+
+.system-info input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    margin-top: 5px;
+    transition: border-color 0.3s ease;
+}
+
+.system-info input[type="text"]:focus {
+    border-color: #0077b5;
+    outline: none;
+}
+
+/* Pozostałe pola - duże */
+.system-info textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    resize: vertical;
+    margin-top: 6px;
+    transition: border-color 0.3s ease;
+}
+
+.system-info textarea:focus,
+#system-id:focus {
+    border-color: #0077b5;
+    outline: none;
+}
+
+.search-button {
+    background-color: #0077b5;
+    color: white;
+    border: none;
+    padding: 11px 25px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-left: 0px; /* mały odstęp od inputa */
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.search-button:hover {
+    background-color: #005f8a;
+}
+
+/* Responsywność */
 @media (max-width: 768px) {
-    .main-title {
-        font-size: 26px;
-    }
-
     .main-description {
-        font-size: 16px;
+        width: 95%;
+        font-size: 14px;
+    }
+    .system-info {
+        width: 95%;
+        padding: 12px;
+    }
+    .system-info input[type="text"] {
+        font-size: 14px;
     }
 }
+
 
 /* Styl ogólnych elementów */
+
 h1 {
-    font-size: 24px;
+    font-size: 34px;
     color: #333;
     margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+div[id^="all-system-inputs-id"] h1 {
+    font-size: 18px;
+    color: #0077b5;
+}
+
+div[id^="all-system-inputs-id"] h2 {
+    font-size: 16px;
+    color: #0077b5;
 }
 
 p {
@@ -64,7 +174,7 @@ div[id^="question-"] {
 label {
     display: block;
     margin: 10px 0;
-    font-size: 16px;
+    font-size: 14px;
     color: #333;
 }
 
@@ -75,6 +185,11 @@ input[type="radio"] {
 /* Nagłówki dla pytań */
 div[id^="question-"] h1 {
     font-size: 18px;
+    color: #0077b5;
+}
+
+div[id^="question-"] h2 {
+    font-size: 16px;
     color: #0077b5;
 }
 
@@ -102,14 +217,28 @@ div[id^="question-"] {
     padding: 15px;
     background-color: #f9f9f9;
     border-radius: 8px;
-    margin-bottom: 20px;
 }
 
 div[id^="question-"] p {
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
     line-height: 1.4;
-    margin-bottom: 15px;
+}
+
+.answer-option {
+    margin-bottom: 8px;
+}
+
+.answer-option label {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.answer-option .example {
+    margin: 4px 0 0 0; /* lekkie wcięcie pod przyciskiem */
+    font-size: 14px;
+    color: #555;
+    font-style: italic;
 }
 
 /* Dodatkowe style dla responsywności */
@@ -163,6 +292,10 @@ div[id^="question-"] p {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
+.survey-result:empty {
+    display: none;
+}
+
 /* Responsywność */
 @media (max-width: 768px) {
     .submit-button {
@@ -175,4 +308,50 @@ div[id^="question-"] p {
         width: 95%;
         font-size: 14px;
     }
+}
+
+/* Kontener nagłówka sekcji pytania - łagodniejszy efekt */
+div[id^="question-"] > .question-header {
+    position: sticky;
+    top: 0;
+    background-color: #f9f9f9; /* kolor taki sam jak tło sekcji */
+    z-index: 10;
+    padding: 8px 15px; /* mniejszy padding */
+    border-bottom: 1px solid #ddd; /* delikatna linia oddzielająca */
+    box-shadow: none; /* usunięty cień */
+}
+
+/* h1 i p wewnątrz nagłówka */
+div[id^="question-"] > .question-header h1 {
+    margin: 0;
+    font-size: 20px;
+    color: #0077b5;
+}
+
+div[id^="question-"] > .question-header p {
+    margin: 4px 0 0 0;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+}
+
+/* Odstęp pierwszej podcechy od nagłówka */
+div[id^="question-"] > .answer-option:first-of-type {
+    margin-top: 8px;
+}
+
+/* status przy głównych pytaniach */
+
+.question-status {
+    display: inline-block;
+    margin-left: 10px;
+    font-weight: 600;
+    color: #0077b5;
+    font-size: 14px;
+}
+.question-status.pass {
+    color: green;
+}
+.question-status.fail {
+    color: red;
 }
