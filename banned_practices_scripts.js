@@ -13,44 +13,46 @@ function countTrue(values) {
 function analyzeAnswers() {
   const required = { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1 };
   const nazwyCech = {
-    1: "Pytanie pierwsze",
-    2: "Pytanie drugie",
-    3: "Pytanie trzecie",
-    4: "Pytanie czwarte",
-    5: "Pytanie piąte",
-    6: "Pytanie szóste",
-    7: "Pytanie siódme",
-    8: "Pytanie ósme"
-  };
+  1: "<strong>Techniki podprogowe, manipulacyjne lub wprowadzajace w błąd (art.5 ust.1 lit.a. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
+  2: "<strong>Wykorzystanie słabości osób (art.5 ust.1 lit.b. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
+  3: "<strong>Scoring społeczny (art.5 ust.1 lit.c. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
+  4: "<strong>Wyciąganie wniosków na temat emocji osoby fizycznej (art.5 ust.1 lit.f. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
+  5: "<strong>Kategoryzacja biometryczna (art.5 ust.1 lit.g. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
+  6: "<strong>Ocena ryzyka przestępstwa na podstawie profilowania (art.5 ust.1 lit.d. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
+  7: "<strong>Rozpoznawanie twarzy (art.5 ust.1 lit.e. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
+  8: "<strong>Zdalna identyfikacja biometryczna (art.5 ust.1 lit.h. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania."
+};
   const results = {};
 
   for (let i = 1; i <= 8; i++) {
-    const odpowiedzi = [];
-    for (let j = 1; j <= 2; j++) {
-      const inputName = `question-${i}-${j}-answer`;
-      odpowiedzi.push(getAnswerValue(inputName));
-    }
+    // Pobierz wszystkie radio inputs dla danego pytania, niezależnie od liczby podpytan
+    const inputs = document.querySelectorAll(`[name^="question-${i}-"][name$="-answer"]`);
+    const odpowiedzi = Array.from(inputs).map(input => getAnswerValue(input.name));
     results[nazwyCech[i]] = countTrue(odpowiedzi) >= required[i];
   }
+
   return results;
 }
 
 // Wyświetlanie wyników analizy odpowiedzi
 function displayResults(results) {
   const container = document.getElementById("answer");
-  container.innerHTML = "<h2>Wyniki analizy:</h2>";
+  container.innerHTML = "<h2>Podsumowanie:</h2>";
   for (const [cecha, passed] of Object.entries(results)) {
-    const status = passed ? "✅ TAK" : "❌ NIE";
-    container.innerHTML += `<p><strong>${cecha}</strong>: ${status}</p>`;
+    if (passed) {
+        container.innerHTML += `<p>${cecha}</p>`;
+    }
   }
 }
 
 // Sprawdzenie czy wszystkie pytania zostały odpowiedziane
 function allQuestionsAnswered() {
   for (let i = 1; i <= 8; i++) {
-    for (let j = 1; j <= 2; j++) {
-      const inputName = `question-${i}-${j}-answer`;
-      if (!document.querySelector(`input[name="${inputName}"]:checked`)) return false;
+    const inputs = document.querySelectorAll(`[name^="question-${i}-"][name$="-answer"]`);
+    for (const input of inputs) {
+      if (!document.querySelector(`input[name="${input.name}"]:checked`)) {
+        return false;
+      }
     }
   }
   return true;
@@ -81,32 +83,32 @@ function calculateSurveyResult() {
   const actionDiv = document.createElement("div");
   actionDiv.style.marginTop = "20px";
 
-  if (allYes) {
-    const text = document.createElement("p");
-    text.innerHTML = "<strong><span style='font-size:22px;'>System jest uznany za system sztucznej inteligencji w rozumieniu AI Act. Przejdź do weryfikacji czy system wykorzystuje praktyki zakazane.</span></strong>";
-    actionDiv.appendChild(text);
-
-    const verifyBtn = document.createElement("button");
-    verifyBtn.textContent = "Weryfikacja wykorzystania praktyk zakazanych";
-    verifyBtn.className = "submit-button";
-    verifyBtn.addEventListener("click", () => {
-        window.location.href = "banned_practices_survey.html"; // pokaż następną ankietę
-    });
-    actionDiv.appendChild(verifyBtn);
-
-  } else {
-    const text = document.createElement("p");
-    text.innerHTML = "<strong><span style='font-size:22px;'>System nie jest uznany za system sztucznej inteligencji w rozumieniu AI Act.</span></strong>";
-    actionDiv.appendChild(text);
-
-    const saveBtn = document.createElement("button");
-    saveBtn.textContent = "Zapisz ankietę";
-    saveBtn.className = "submit-button";
-    saveBtn.addEventListener("click", () => {
-        window.location.href = "success.html"; // pokaż ekran sukcesu
-    });
-    actionDiv.appendChild(saveBtn);
-  }
+//  if (allYes) {
+//    const text = document.createElement("p");
+//    text.innerHTML = "<strong><span style='font-size:22px;'>System jest uznany za system sztucznej inteligencji w rozumieniu AI Act. Przejdź do weryfikacji czy system wykorzystuje praktyki zakazane.</span></strong>";
+//    actionDiv.appendChild(text);
+//
+//    const verifyBtn = document.createElement("button");
+//    verifyBtn.textContent = "Weryfikacja wykorzystania praktyk zakazanych";
+//    verifyBtn.className = "submit-button";
+//    verifyBtn.addEventListener("click", () => {
+//        window.location.href = "banned_practices_survey.html"; // pokaż następną ankietę
+//    });
+//    actionDiv.appendChild(verifyBtn);
+//
+//  } else {
+//    const text = document.createElement("p");
+//    text.innerHTML = "<strong><span style='font-size:22px;'>System nie jest uznany za system sztucznej inteligencji w rozumieniu AI Act.</span></strong>";
+//    actionDiv.appendChild(text);
+//
+//    const saveBtn = document.createElement("button");
+//    saveBtn.textContent = "Zapisz ankietę";
+//    saveBtn.className = "submit-button";
+//    saveBtn.addEventListener("click", () => {
+//        window.location.href = "success.html"; // pokaż ekran sukcesu
+//    });
+//    actionDiv.appendChild(saveBtn);
+//  }
 
   // Dodanie akcji poniżej podsumowania
   answerBox.appendChild(actionDiv);
