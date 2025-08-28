@@ -258,6 +258,10 @@ div[id^="question-"] p {
     font-style: italic;
 }
 
+.answer-input {
+    margin-left: 10px;
+}
+
 /* Dodatkowe style dla responsywności */
 @media (max-width: 768px) {
     form {
