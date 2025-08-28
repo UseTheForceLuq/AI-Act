@@ -204,3 +204,10 @@ function fillAllNo() {
     updateSectionStatus(i);
   }
 }
+
+// Reset po odświeżeniu strony
+window.addEventListener('load', () => {
+  document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
+  document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
+  document.querySelectorAll('textarea').forEach(area => area.value = '');
+});

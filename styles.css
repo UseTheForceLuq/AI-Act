@@ -94,12 +94,12 @@ body {
 
 /* Pozostałe pola - duże */
 .system-info textarea {
-    width: 100%;
+    width: 98.5%;
     padding: 12px;
     border-radius: 6px;
     border: 1px solid #ccc;
     font-size: 15px;
-    resize: vertical;
+    resize: none;
     margin-top: 6px;
     transition: border-color 0.3s ease;
 }
