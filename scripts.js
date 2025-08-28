@@ -125,7 +125,7 @@ function updateSectionStatus(sectionNumber) {
   } else {
     statusEl.textContent = ""; // brak statusu jeśli nie wszystkie odpowiedzi zaznaczone
   }
-  
+
   // Aktualizacja końcowego wyniku tylko jeśli sekcja #answer jest już widoczna
   const answerBox = document.getElementById("answer");
   const answerVisible = answerBox.innerHTML.trim() !== ""; // sprawdzamy czy coś jest już w #answer
@@ -147,8 +147,8 @@ function updateSectionStatus(sectionNumber) {
 // Funkcja do mockowego wyszukiwania systemu
 function searchSystem() {
     const systemId = document.getElementById("system-id").value.trim();
-    const systemNameInput = document.getElementById("system-name");
-    
+    const systemNameInput = document.getElementById("system-idd");
+
     if (systemId) {
         // Możesz tu zamockować różne nazwy systemów dla przykładowych ID
         const mockDatabase = {
