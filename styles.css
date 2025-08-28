@@ -262,6 +262,29 @@ div[id^="question-"] p {
     margin-left: 10px;
 }
 
+/* Styl dla inputów uzasadnienia odpowiedzi */
+.answer-input {
+    display: inline-block;
+    width: 650px;
+    height: 35px;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    margin-left: 10px; /* odstęp od radio */
+    transition: border-color 0.3s ease;
+}
+
+.answer-input:focus {
+    border-color: #0077b5;
+    outline: none;
+}
+
+.answer-option label input[type="radio"] + span {
+    display: inline-block;
+    width: 30px; /* szerokość dla tekstu TAK/NIE */
+}
+
 /* Dodatkowe style dla responsywności */
 @media (max-width: 768px) {
     form {
