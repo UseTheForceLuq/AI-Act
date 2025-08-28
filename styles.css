@@ -332,6 +332,21 @@ div[id^="question-"] p {
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
+.survey-success-result {
+    width: 70%;
+    margin: 40px auto; /* góra/dół 40px, auto na boki centrowanie */
+    padding: 20px;
+    background-color: #d1e7dd;
+    border: 1px solid #badbcc;
+    border-radius: 10px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    font-size: 15px;
+    color: #0f5132;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    text-align: center; /* wyśrodkowanie tekstu */
+}
+
 .survey-result:empty {
     display: none;
 }

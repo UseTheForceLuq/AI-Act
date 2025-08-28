@@ -1,12 +1,15 @@
+// Pobranie wartości odpowiedzi TAK/NIE
 function getAnswerValue(name) {
   const selected = document.querySelector(`input[name="${name}"]:checked`);
-  return selected ? selected.value === "yes" : false; // TAK = true
+  return selected ? selected.value === "yes" : false;
 }
 
+// Liczenie wartości true
 function countTrue(values) {
   return values.filter(v => v).length;
 }
 
+// Analiza odpowiedzi
 function analyzeAnswers() {
   const required = { 1: 5, 2: 3, 3: 2, 4: 5, 5: 2 };
   const nazwyCech = {
@@ -29,6 +32,7 @@ function analyzeAnswers() {
   return results;
 }
 
+// Wyświetlanie wyników analizy odpowiedzi
 function displayResults(results) {
   const container = document.getElementById("answer");
   container.innerHTML = "<h2>Wyniki analizy:</h2>";
@@ -38,6 +42,7 @@ function displayResults(results) {
   }
 }
 
+// Sprawdzenie czy wszystkie pytania zostały odpowiedziane
 function allQuestionsAnswered() {
   for (let i = 1; i <= 5; i++) {
     for (let j = 1; j <= 5; j++) {
@@ -48,7 +53,7 @@ function allQuestionsAnswered() {
   return true;
 }
 
-// Funkcja wywoływana tylko przy kliknięciu przycisku "Zatwierdź ankietę"
+// Funkcja wywoływana przy zatwierdzeniu ankiety
 function calculateSurveyResult() {
   const answerBox = document.getElementById("answer");
 
@@ -65,24 +70,65 @@ function calculateSurveyResult() {
   answerBox.style.color = "#333";
   answerBox.style.border = "1px solid #cce0ee";
 
-  displayResults(analyzeAnswers());
+  // Wyświetlenie podsumowania odpowiedzi
+  const results = analyzeAnswers();
+  displayResults(results);
+  const allYes = Object.values(results).every(v => v);
+
+  const actionDiv = document.createElement("div");
+  actionDiv.style.marginTop = "20px";
+
+  if (allYes) {
+    const text = document.createElement("p");
+    text.textContent = "System jest uznany za system sztucznej inteligencji w rozumieniu AI Act. Przejdź do weryfikacji czy system wykorzystuje praktyki zakazane.";
+    actionDiv.appendChild(text);
+
+    const verifyBtn = document.createElement("button");
+    verifyBtn.textContent = "Weryfikacja wykorzystania praktyk zakazanych";
+    verifyBtn.className = "submit-button";
+    verifyBtn.addEventListener("click", () => {
+        showNextSurvey(); // pokaż następną ankietę
+    });
+    actionDiv.appendChild(verifyBtn);
+
+  } else {
+    const text = document.createElement("p");
+    text.textContent = "System nie jest uznany za system sztucznej inteligencji w rozumieniu AI Act.";
+    actionDiv.appendChild(text);
+
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "Zapisz ankietę";
+    saveBtn.className = "submit-button";
+    saveBtn.addEventListener("click", () => {
+        window.location.href = "success.html"; // pokaż ekran sukcesu
+    });
+    actionDiv.appendChild(saveBtn);
+  }
+
+  // Dodanie akcji poniżej podsumowania
+  answerBox.appendChild(actionDiv);
   answerBox.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-// Inicjalizacja nasłuchu
-window.addEventListener('load', () => {
-  // Wyczyszczenie zaznaczeń po odświeżeniu
-  document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
-  document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
-  document.querySelectorAll('textarea').forEach(area => area.value = '');
+// Pokazuje następną ankietę
+function showNextSurvey() {
+  alert("Tutaj zostanie wyświetlona kolejna ankieta...");
+}
 
-  // Nasłuch dla każdej zmiany odpowiedzi
-  document.querySelectorAll('input[type="radio"]').forEach(radio => {
+// Obsługa pojawiania się inputów do uzasadnienia przy TAK/NIE
+function toggleAnswerInputs() {
+  document.querySelectorAll('.answer-option input[type="radio"]').forEach(radio => {
+    const inputField = radio.closest('label').querySelector('.answer-input');
+    if (inputField) inputField.style.display = radio.checked ? 'inline-block' : 'none';
     radio.addEventListener('change', () => {
-      for (let q = 1; q <= 5; q++) updateSectionStatus(q);
+      const allSiblings = document.getElementsByName(radio.name);
+      allSiblings.forEach(r => {
+        const siblingInput = r.closest('label').querySelector('.answer-input');
+        if (siblingInput) siblingInput.style.display = r.checked ? 'inline-block' : 'none';
+      });
     });
   });
-});
+}
 
 // Aktualizacja statusu sekcji przy nagłówku
 function updateSectionStatus(sectionNumber) {
@@ -90,7 +136,6 @@ function updateSectionStatus(sectionNumber) {
   const sectionHeader = sectionWrapper.querySelector('.question-header');
   if (!sectionHeader) return;
 
-  // wszystkie podcechy w danej sekcji
   const subQuestions = Array.from(sectionWrapper.querySelectorAll(`[id^="question-${sectionNumber}-"][id$="-wrapper"]`))
                             .filter(div => div.id !== `question-${sectionNumber}-wrapper`);
 
@@ -99,36 +144,31 @@ function updateSectionStatus(sectionNumber) {
 
   subQuestions.forEach(subQ => {
     const selected = subQ.querySelector('input[type="radio"]:checked');
-    if (!selected) {
-      allAnswered = false;
-    } else {
-      answers.push(selected.value === "yes"); // TAK = true
-    }
+    if (!selected) allAnswered = false;
+    else answers.push(selected.value === "yes");
   });
 
   const requiredCounts = {1:5, 2:3, 3:2, 4:5, 5:2};
   const passed = allAnswered ? (answers.filter(v => v).length >= requiredCounts[sectionNumber]) : false;
 
-  // Szukamy lub tworzymy span statusu przy h1
   let statusEl = sectionHeader.querySelector('h1 > .section-status');
   if (!statusEl) {
     statusEl = document.createElement('span');
     statusEl.className = 'section-status';
     statusEl.style.marginLeft = '15px';
     statusEl.style.fontWeight = '600';
-    sectionHeader.querySelector('h1').appendChild(statusEl); // dodajemy bezpośrednio przy h1
+    sectionHeader.querySelector('h1').appendChild(statusEl);
   }
 
   if (allAnswered) {
     statusEl.textContent = passed ? "✅ TAK" : "❌ NIE";
     statusEl.style.color = passed ? 'green' : 'red';
   } else {
-    statusEl.textContent = ""; // brak statusu jeśli nie wszystkie odpowiedzi zaznaczone
+    statusEl.textContent = "";
   }
 
-  // Aktualizacja końcowego wyniku tylko jeśli sekcja #answer jest już widoczna
   const answerBox = document.getElementById("answer");
-  const answerVisible = answerBox.innerHTML.trim() !== ""; // sprawdzamy czy coś jest już w #answer
+  const answerVisible = answerBox.innerHTML.trim() !== "";
   if (answerVisible) {
     if (allQuestionsAnswered()) {
       answerBox.style.backgroundColor = "#eef6fb";
@@ -144,67 +184,35 @@ function updateSectionStatus(sectionNumber) {
   }
 }
 
-// Funkcja do mockowego wyszukiwania systemu
+// Mockowe wyszukiwanie systemu
 function searchSystem() {
-    const systemId = document.getElementById("system-id").value.trim();
-    const systemNameInput = document.getElementById("system-idd");
+  const systemId = document.getElementById("system-id").value.trim();
+  const systemNameInput = document.getElementById("system-idd");
 
-    if (systemId) {
-        // Możesz tu zamockować różne nazwy systemów dla przykładowych ID
-        const mockDatabase = {
-            "1001": "System bankowości mobilnej",
-            "1002": "System scoringu kredytowego",
-            "1003": "System detekcji oszustw"
-        };
-        systemNameInput.value = mockDatabase[systemId] || "System automatycznej wyceny nieruchomości";
-    } else {
-        systemNameInput.value = "";
-    }
+  if (systemId) {
+    const mockDatabase = {
+      "1001": "System bankowości mobilnej",
+      "1002": "System scoringu kredytowego",
+      "1003": "System detekcji oszustw"
+    };
+    systemNameInput.value = mockDatabase[systemId] || "System automatycznej wyceny nieruchomości";
+  } else {
+    systemNameInput.value = "";
+  }
 }
 
-// Nasłuch na przycisk
-document.addEventListener('DOMContentLoaded', () => {
-    const searchBtn = document.getElementById("search-system-btn");
-    if (searchBtn) {
-        searchBtn.addEventListener('click', searchSystem);
-    }
-});
-
-// Pokaż/ukryj pole uzasadnienia zależnie od zaznaczenia TAK/NIE
-function toggleAnswerInputs() {
-  document.querySelectorAll('input[type="radio"]').forEach(radio => {
-    radio.addEventListener('change', (e) => {
-      const name = radio.name; // nazwa grupy radio
-      // wszystkie inputy w tej samej grupie
-      const allInputs = document.querySelectorAll(`input[name="${name}"]`);
-      allInputs.forEach(r => {
-        const input = r.closest('label')?.querySelector('.answer-input');
-        if (input) {
-          input.style.display = r.checked ? 'inline-block' : 'none';
-        }
-      });
-    });
-  });
-}
-
-// wywołanie po załadowaniu strony
-window.addEventListener('load', () => {
-  toggleAnswerInputs();
-});
-
-// Funkcja zaznaczająca losowe odpowiedzi
+// Funkcje testowe: losowe odpowiedzi / wszystkie TAK / wszystkie NIE
 function fillRandomAnswers() {
-  for (let i = 1; i <= 5; i++) { // pytania
-    for (let j = 1; j <= 5; j++) { // podcechy
+  for (let i = 1; i <= 5; i++) {
+    for (let j = 1; j <= 5; j++) {
       const choice = Math.random() < 0.5 ? "yes" : "no";
       const input = document.querySelector(`input[name="question-${i}-${j}-answer"][value="${choice}"]`);
       if (input) input.checked = true;
     }
-    updateSectionStatus(i); // od razu aktualizuj status sekcji
+    updateSectionStatus(i);
   }
 }
 
-// Funkcja zaznaczająca wszystkie TAK
 function fillAllYes() {
   for (let i = 1; i <= 5; i++) {
     for (let j = 1; j <= 5; j++) {
@@ -215,7 +223,6 @@ function fillAllYes() {
   }
 }
 
-// Funkcja zaznaczająca wszystkie NIE
 function fillAllNo() {
   for (let i = 1; i <= 5; i++) {
     for (let j = 1; j <= 5; j++) {
@@ -226,9 +233,20 @@ function fillAllNo() {
   }
 }
 
-// Reset po odświeżeniu strony
+// Inicjalizacja po załadowaniu strony
 window.addEventListener('load', () => {
   document.querySelectorAll('input[type="radio"]').forEach(radio => radio.checked = false);
   document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
   document.querySelectorAll('textarea').forEach(area => area.value = '');
+
+  toggleAnswerInputs();
+
+  document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      for (let q = 1; q <= 5; q++) updateSectionStatus(q);
+    });
+  });
+
+  const searchBtn = document.getElementById("search-system-btn");
+  if (searchBtn) searchBtn.addEventListener('click', searchSystem);
 });
