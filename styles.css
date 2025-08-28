@@ -258,13 +258,9 @@ div[id^="question-"] p {
     font-style: italic;
 }
 
-.answer-input {
-    margin-left: 10px;
-}
-
 /* Styl dla inputów uzasadnienia odpowiedzi */
 .answer-input {
-    display: inline-block;
+    display: none;
     width: 650px;
     height: 35px;
     padding: 8px;

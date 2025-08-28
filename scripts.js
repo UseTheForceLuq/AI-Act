@@ -170,6 +170,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Pokaż/ukryj pole uzasadnienia zależnie od zaznaczenia TAK/NIE
+function toggleAnswerInputs() {
+  document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+      const name = radio.name; // nazwa grupy radio
+      // wszystkie inputy w tej samej grupie
+      const allInputs = document.querySelectorAll(`input[name="${name}"]`);
+      allInputs.forEach(r => {
+        const input = r.closest('label')?.querySelector('.answer-input');
+        if (input) {
+          input.style.display = r.checked ? 'inline-block' : 'none';
+        }
+      });
+    });
+  });
+}
+
+// wywołanie po załadowaniu strony
+window.addEventListener('load', () => {
+  toggleAnswerInputs();
+});
 
 // Funkcja zaznaczająca losowe odpowiedzi
 function fillRandomAnswers() {
