@@ -1,10 +1,292 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Banned Practices questionnaire</title>
+    <script type="text/javascript" src="banned_practices_scripts.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<div>
+    <h1 class="main-title">ANKIETA OCENIAJĄCA SYSTEM POD KĄTEM WYKORZYSTANIA PRAKTYK ZAKAZANYCH</h1>
 
+    <form id="questionnaire-form">
+        <!-- Question 1 -->
+        <div id="question-1-wrapper">
+            <div class="question-header">
+                <h1>Techniki podprogowe, manipulacyjne lub wprowadzajace w błąd (art.5 ust.1 lit.a. AI Act)</h1>
+                <span class="question-status"></span>
+            </div>
+
+            <div id="question-1-1-wrapper" class="answer-option">
+                <h2>Czy system używa ukrytych sygnałów lub technik, które wpływają na decyzje użytkownika bez jego pełnej świadomości?</h2>
+                <p class="example"><em>Przykład: W aplikacji bankowej subtelne animacje lub dźwięki zachęcają klienta do wzięcia kredytu
+                    konsumenckiego, bez jasnego wyjaśnienia ryzyka wysokich odsetek.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-1-1-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-1-1-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+
+            <div id="question-1-2-wrapper" class="answer-option">
+                <h2>Czy system wprowadza w błąd co do swoich możliwości lub intencji, np. udając interakcję z człowiekiem?</h2>
+                <p class="example"><em>Przykład: Chatbot bankowy podszywa się pod doradcę finansowego, aby
+                    nakłonić do inwestycji w ryzykowne produkty, nie ujawniając, że jest AI.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-1-2-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-1-2-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div id="question-2-wrapper">
+            <div class="question-header">
+                <h1>Wykorzystanie słabości osób (art.5 ust.1 lit.b. AI Act)</h1>
+            </div>
+
+            <div id="question-2-1-wrapper" class="answer-option">
+                <h2>Czy system celowo wykorzystuje słabości konkretnych grup osób (np. wiek, niepełnosprawność) do zmiany ich zachowania?</h2>
+                <p class="example"><em>Przykład: Oferta kredytowa w banku skierowana do osób starszych z uproszczonymi,
+                    ale mylącymi informacjami, wykorzystując ich potencjalną niższą znajomość technologii.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-2-1-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-2-1-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+
+            <div id="question-2-2-wrapper" class="answer-option">
+                <h2>Czy system dostosowuje komunikację, aby manipulować decyzjami osób wrażliwych?</h2>
+                <p class="example"><em>Przykład: AI w banku wykrywa stres klienta podczas rozmowy i proponuje
+                    droższy kredyt, wykorzystując chwilową słabość emocjonalną.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-2-2-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-2-2-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div id="question-3-wrapper">
+            <div class="question-header">
+                <h1>Scoring społeczny (art.5 ust.1 lit.c. AI Act)</h1>
+            </div>
+
+            <div id="question-3-1-wrapper">
+                <h2>Czy system ocenia zachowania społeczne osób i używa tego do dyskryminującego traktowania?</h2>
+                <p class="example"><em>Przykład: Bank tworzy scoring na podstawie aktywności w mediach społecznościowych, odmawiając kredytu osobom o &quot;niskim scoringu
+                    społecznym&quot; z powodu postów krytykujących instytucje finansowe.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-3-1-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-3-1-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div id="question-4-wrapper">
+            <div class="question-header">
+                <h1>Wyciąganie wniosków na temat emocji osoby fizycznej (art.5 ust.1 lit.f. AI Act)</h1>
+            </div>
+
+            <div id="question-4-1-wrapper">
+                <h2>Czy system analizuje emocje osób w kontekście pracy lub edukacji?</h2>
+                <p class="example"><em>Przykład: W banku AI monitoruje emocje pracowników podczas obsługi klientów przez kamerę, aby ocenić ich wydajność i decydować o premiach.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-4-1-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-4-1-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div id="question-5-wrapper">
+            <div class="question-header">
+                <h1>Kategoryzacja biometryczna (art.5 ust.1 lit.g. AI Act)</h1>
+            </div>
+
+            <div id="question-5-1-wrapper">
+                <h2>Czy system kategoryzuje ludzi na podstawie danych biometrycznych, wnioskując wrażliwe cechy jak rasa czy poglądy?</h2>
+                <p class="example"><em>Przykład: Bank używa analizy twarzy do wnioskowania o pochodzeniu
+                    etnicznym klienta i dostosowania oferty kredytowej na podstawie stereotypów.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-5-1-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-5-1-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div id="question-6-wrapper">
+            <div class="question-header">
+                <h1>Ocena ryzyka przestępstwa na podstawie profilowania (art.5 ust.1 lit.d. AI Act)</h1>
+            </div>
+
+            <div id="question-6-1-wrapper" class="answer-option">
+                <h2>Czy system przewiduje ryzyko przestępstwa na podstawie profilu osobowości lub cech?</h2>
+                <p class="example"><em>Przykład: Bank używa AI do analizy danych transakcyjnych i behawioralnych, aby przewidzieć, czy
+                    klient może popełnić oszustwo finansowe, blokując konto prewencyjnie.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-6-1-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-6-1-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+
+            <div id="question-6-2-wrapper" class="answer-option">
+                <h2>Czy profilowanie obejmuje cechy osobowe niezwiązane bezpośrednio z przestępczością?</h2>
+                <p class="example"><em>Przykład: AI w banku ocenia ryzyko prania pieniędzy na podstawie hobby
+                    lub nawyków zakupowych klienta, zakładając &quot;profil przestępcy&quot;.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-6-2-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-6-2-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div id="question-7-wrapper">
+            <div class="question-header">
+                <h1>Rozpoznawanie twarzy (art.5 ust.1 lit.e. AI Act)</h1>
+            </div>
+
+            <div id="question-7-1-wrapper" class="answer-option">
+                <h2>Czy system zbiera obrazy twarzy z internetu lub monitoringu bez zgody do bazy danych rozpoznawania?</h2>
+                <p class="example"><em>Przykład: Bank scrapuje zdjęcia klientów z mediów społecznościowych,
+                    aby stworzyć bazę do automatycznej weryfikacji tożsamości w oddziałach.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-7-1-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-7-1-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+
+            <div id="question-7-2-wrapper" class="answer-option">
+                <h2>Czy taka baza jest używana do identyfikacji bez wyraźnej zgody?</h2>
+                <p class="example"><em>Przykład: AI w banku używa zebranych danych twarzy do blokowania dostępu do konta,
+                    jeśli wykryje &quot;podejrzane&quot; podobieństwo do znanych oszustów.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-7-2-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-7-2-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Question 8 -->
+        <div id="question-8-wrapper">
+            <div class="question-header">
+                <h1>Zdalna identyfikacja biometryczna (art.5 ust.1 lit.h. AI Act)</h1>
+            </div>
+
+            <div id="question-8-1-wrapper" class="answer-option">
+                <h2>Czy system używa real-time biometrycznej identyfikacji w miejscach publicznych bez uzasadnienia?</h2>
+                <p class="example"><em>Przykład: W oddziałach bankowych kamery AI identyfikują klientów w czasie
+                    rzeczywistym na podstawie twarzy, bez ich wiedzy, aby monitorować zachowanie.</em></p>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-8-1-answer" value="yes"><span>TAK</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+                <div class="answer-option">
+                    <label>
+                        <input type="radio" name="question-8-1-answer" value="no"><span>NIE</span>
+                        <input type="text" class="answer-input" placeholder="Uzasadnij odpowiedź">
+                    </label>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <button type="button" class="submit-button" onclick="calculateSurveyResult()">Zatwierdź ankietę</button>
+    <div id="answer" class="survey-result"></div>
+</div>
 </body>
 </html>
