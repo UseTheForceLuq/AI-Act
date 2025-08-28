@@ -80,20 +80,20 @@ function calculateSurveyResult() {
 
   if (allYes) {
     const text = document.createElement("p");
-    text.textContent = "System jest uznany za system sztucznej inteligencji w rozumieniu AI Act. Przejdź do weryfikacji czy system wykorzystuje praktyki zakazane.";
+    text.innerHTML = "<strong><span style='font-size:22px;'>System jest uznany za system sztucznej inteligencji w rozumieniu AI Act. Przejdź do weryfikacji czy system wykorzystuje praktyki zakazane.</span></strong>";
     actionDiv.appendChild(text);
 
     const verifyBtn = document.createElement("button");
     verifyBtn.textContent = "Weryfikacja wykorzystania praktyk zakazanych";
     verifyBtn.className = "submit-button";
     verifyBtn.addEventListener("click", () => {
-        showNextSurvey(); // pokaż następną ankietę
+        window.location.href = "banned_practices_survey.html"; // pokaż następną ankietę
     });
     actionDiv.appendChild(verifyBtn);
 
   } else {
     const text = document.createElement("p");
-    text.textContent = "System nie jest uznany za system sztucznej inteligencji w rozumieniu AI Act.";
+    text.innerHTML = "<strong><span style='font-size:22px;'>System nie jest uznany za system sztucznej inteligencji w rozumieniu AI Act.</span></strong>";
     actionDiv.appendChild(text);
 
     const saveBtn = document.createElement("button");
@@ -108,11 +108,6 @@ function calculateSurveyResult() {
   // Dodanie akcji poniżej podsumowania
   answerBox.appendChild(actionDiv);
   answerBox.scrollIntoView({ behavior: "smooth", block: "center" });
-}
-
-// Pokazuje następną ankietę
-function showNextSurvey() {
-  alert("Tutaj zostanie wyświetlona kolejna ankieta...");
 }
 
 // Obsługa pojawiania się inputów do uzasadnienia przy TAK/NIE
