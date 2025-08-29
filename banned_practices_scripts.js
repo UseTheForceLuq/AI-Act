@@ -13,14 +13,14 @@ function countTrue(values) {
 function analyzeAnswers() {
   const required = { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1 };
   const nazwyCech = {
-  1: "<strong>Techniki podprogowe, manipulacyjne lub wprowadzajace w błąd (art.5 ust.1 lit.a. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
-  2: "<strong>Wykorzystanie słabości osób (art.5 ust.1 lit.b. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
-  3: "<strong>Scoring społeczny (art.5 ust.1 lit.c. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
-  4: "<strong>Wyciąganie wniosków na temat emocji osoby fizycznej (art.5 ust.1 lit.f. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
-  5: "<strong>Kategoryzacja biometryczna (art.5 ust.1 lit.g. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
-  6: "<strong>Ocena ryzyka przestępstwa na podstawie profilowania (art.5 ust.1 lit.d. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
-  7: "<strong>Rozpoznawanie twarzy (art.5 ust.1 lit.e. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania.",
-  8: "<strong>Zdalna identyfikacja biometryczna (art.5 ust.1 lit.h. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. Odpowiedz na dodatkowe pytania."
+  1: "<strong>Techniki podprogowe, manipulacyjne lub wprowadzajace w błąd (art.5 ust.1 lit.a. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. ",
+  2: "<strong>Wykorzystanie słabości osób (art.5 ust.1 lit.b. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. ",
+  3: "<strong>Scoring społeczny (art.5 ust.1 lit.c. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. ",
+  4: "<strong>Wyciąganie wniosków na temat emocji osoby fizycznej (art.5 ust.1 lit.f. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. ",
+  5: "<strong>Kategoryzacja biometryczna (art.5 ust.1 lit.g. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. ",
+  6: "<strong>Ocena ryzyka przestępstwa na podstawie profilowania (art.5 ust.1 lit.d. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. ",
+  7: "<strong>Rozpoznawanie twarzy (art.5 ust.1 lit.e. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. ",
+  8: "<strong>Zdalna identyfikacja biometryczna (art.5 ust.1 lit.h. AI Act):</strong> Brak lub niskie ryzyko zawalifikowania systemu jako wykorzystującego praktyki zakazane / Istnieje istotne ryzyko wykorzystania praktyk zakazanych w systemie. "
 };
   const results = {};
 
@@ -48,7 +48,7 @@ function displayResults(results) {
     if (!passed) {
       textToShow = mainTxt + "</strong> " + parts[0]?.trim();
     } else {
-      textToShow = mainTxt + "</strong> " + parts[1]?.trim();
+      textToShow = mainTxt + "</strong> " + parts[1]?.trim() + " Konieczne jest wykonanie indywidualnej interpretacji we współpracy z Departamentem Compliance (<a href='mailto:compliance@bank.pl'>compliance@bank.pl</a>)";
     }
 
     container.innerHTML += `<p>${textToShow}</p>`;
