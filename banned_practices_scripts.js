@@ -46,12 +46,12 @@ function displayResults(results) {
 
     let textToShow = "";
     if (!passed) {
-      textToShow = mainTxt + "</strong> " + parts[0]?.trim();
+      textToShow = "<li>" + mainTxt + "</strong> " + parts[0]?.trim() + "</li>";
     } else {
-      textToShow = mainTxt + "</strong> " + parts[1]?.trim() + " Konieczne jest wykonanie indywidualnej interpretacji we współpracy z Departamentem Compliance (<a href='mailto:compliance@bank.pl'>compliance@bank.pl</a>)";
+      textToShow = "<li>" + mainTxt + "</strong> " + parts[1]?.trim() + " Konieczne jest wykonanie indywidualnej interpretacji we współpracy z Departamentem Compliance (<a href='mailto:compliance@bank.pl'>compliance@bank.pl</a>)</li>";
     }
 
-    container.innerHTML += `<p>${textToShow}</p>`;
+    container.innerHTML += `<p><ul>${textToShow}</ul><br/></p>`;
   }
 }
 
@@ -88,37 +88,36 @@ function calculateSurveyResult() {
   // Wyświetlenie podsumowania odpowiedzi
   const results = analyzeAnswers();
   displayResults(results);
-  const allYes = Object.values(results).every(v => v);
+  const allNo = Object.values(results).every(v => !v);
 
   const actionDiv = document.createElement("div");
   actionDiv.style.marginTop = "20px";
 
-//  if (allYes) {
-//    const text = document.createElement("p");
-//    text.innerHTML = "<strong><span style='font-size:22px;'>System jest uznany za system sztucznej inteligencji w rozumieniu AI Act. Przejdź do weryfikacji czy system wykorzystuje praktyki zakazane.</span></strong>";
-//    actionDiv.appendChild(text);
-//
-//    const verifyBtn = document.createElement("button");
-//    verifyBtn.textContent = "Weryfikacja wykorzystania praktyk zakazanych";
-//    verifyBtn.className = "submit-button";
-//    verifyBtn.addEventListener("click", () => {
-//        window.location.href = "banned_practices_survey.html"; // pokaż następną ankietę
-//    });
-//    actionDiv.appendChild(verifyBtn);
-//
-//  } else {
-//    const text = document.createElement("p");
-//    text.innerHTML = "<strong><span style='font-size:22px;'>System nie jest uznany za system sztucznej inteligencji w rozumieniu AI Act.</span></strong>";
-//    actionDiv.appendChild(text);
-//
-//    const saveBtn = document.createElement("button");
-//    saveBtn.textContent = "Zapisz ankietę";
-//    saveBtn.className = "submit-button";
-//    saveBtn.addEventListener("click", () => {
-//        window.location.href = "success.html"; // pokaż ekran sukcesu
-//    });
-//    actionDiv.appendChild(saveBtn);
-//  }
+  if (allNo) {
+    const text = document.createElement("p");
+    text.innerHTML = "<strong><span style='font-size:22px;'>System nie wykorzystuje praktyk zakazanych.</span></strong>";
+    actionDiv.appendChild(text);
+
+    const saveBtn = document.createElement("button");
+    saveBtn.textContent = "Zapisz ankietę";
+    saveBtn.className = "submit-button";
+    saveBtn.addEventListener("click", () => {
+      window.location.href = "success.html"; // pokaż ekran sukcesu
+    });
+    actionDiv.appendChild(saveBtn);
+  } else {
+    const text = document.createElement("p");
+    text.innerHTML = "<strong><span style='font-size:22px;'>System wykorzystuje praktyki zakazane.</span></strong>";
+    actionDiv.appendChild(text);
+
+    const verifyBtn = document.createElement("button");
+    verifyBtn.textContent = "Zapisz ankietę";
+    verifyBtn.className = "submit-button";
+    verifyBtn.addEventListener("click", () => {
+    window.location.href = "banned_practices_survey_success.html"; // pokaż ekran sukcesu dla banned practices
+    });
+    actionDiv.appendChild(verifyBtn);
+  }
 
   // Dodanie akcji poniżej podsumowania
   answerBox.appendChild(actionDiv);
