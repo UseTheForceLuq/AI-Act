@@ -39,9 +39,19 @@ function displayResults(results) {
   const container = document.getElementById("answer");
   container.innerHTML = "<h2>Podsumowanie:</h2>";
   for (const [cecha, passed] of Object.entries(results)) {
-    if (passed) {
-        container.innerHTML += `<p>${cecha}</p>`;
+    const mainTxt = cecha.split("</strong>")[0] || "";
+
+    const afterStrong = cecha.split("</strong>")[1] || "";
+    const parts = afterStrong.split("/");
+
+    let textToShow = "";
+    if (!passed) {
+      textToShow = mainTxt + "</strong> " + parts[0]?.trim();
+    } else {
+      textToShow = mainTxt + "</strong> " + parts[1]?.trim();
     }
+
+    container.innerHTML += `<p>${textToShow}</p>`;
   }
 }
 
